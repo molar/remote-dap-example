@@ -1,12 +1,10 @@
 #!/bin/bash
-set -x
-
+BINARY_TO_DEBUG=$1
 CONFIG=$(cat << EOF
 :lua require('dap').run({ \
-  name = "asdf", \
   type = "lldb", \
   request = "launch", \
-  program = "\${workspaceFolder}/bazel-bin/test/test_cgroupsv2", \
+  program = "\${workspaceFolder}/${BINARY_TO_DEBUG}", \
   cwd = '\${workspaceFolder}', \
   sourceMap = { { ".", "\${workspaceFolder}" } }, \
   stopOnEntry = false, \
